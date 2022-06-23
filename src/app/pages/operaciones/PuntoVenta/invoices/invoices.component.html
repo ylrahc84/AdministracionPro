@@ -1,0 +1,223 @@
+<div class="row animated fadeIn fast">
+    <div class="col-12">
+        <div class="card">
+            <h2>Invoices</h2>
+            <div class="card-body">
+                <form action="" class="form-horizontal"
+                    autocomplete="off"
+                    [formGroup]="invoiceForm"
+                    (ngSubmit)="cargarInvoice()"
+                    >
+                    <div class="form-body">
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <h5 class="box-title m-t-30">Fecha Inicial</h5>
+                                    <div class="col-md-10">
+                                        <div class="input-group">
+                                            <!-- input box -->
+                                            <input class="form-control" 
+                                                    name="FechaDocu" 
+                                                    placeholder="Select a date" 
+                                                    formControlName="FechaDocu"
+                                                   angular-mydatepicker #dp="angular-mydatepicker" 
+                                                   [(ngModel)]="model" [options]="myDpOptionsFI" 
+                                                   (dateChanged)="onDateChangedFI($event)"/>
+                                            <!-- clear date button -->
+                                            <div class="input-group-append">
+                                              <button type="button" class="btn btn-secondary" *ngIf="model" (click)="dp.clearDate()">
+                                                <i class="fa fa-close"></i>
+                                              </button>
+                                            </div>
+                                            <!-- toggle calendar button -->
+                                            <div class="input-group-append">
+                                              <button type="button" class="btn btn-secondary" (click)="dp.toggleCalendar()">
+                                                <i class="fa fa-calendar-o"></i>
+                                              </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <h5 class="box-title m-t-30">Fecha Final</h5>
+                                    <div class="col-md-10">
+                                        <div class="input-group">
+                                            <!-- input box -->
+                                            <input class="form-control" 
+                                                    name="FechaPago" 
+                                                    placeholder="Select a date" 
+                                                    formControlName="FechaPago"
+                                                   angular-mydatepicker #dp2="angular-mydatepicker" 
+                                                   [(ngModel)]="model2" [options]="myDpOptionsFF" 
+                                                   (dateChanged)="onDateChangedFF($event)"/>
+                                            <!-- clear date button -->
+                                            <div class="input-group-append">
+                                              <button type="button" class="btn btn-secondary" *ngIf="model2" (click)="dp2.clearDate()">
+                                                <i class="fa fa-close"></i>
+                                              </button>
+                                            </div>
+                                            <!-- toggle calendar button -->
+                                            <div class="input-group-append">
+                                              <button type="button" class="btn btn-secondary" (click)="dp2.toggleCalendar()">
+                                                <i class="fa fa-calendar-o"></i>
+                                              </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div class="col-md-3">
+                                <div class="col-md-8">
+                                    <h5 class="box-title m-t-30">Estado</h5>
+                                    <select class="form-control custom-select" 
+                                            data-placeholder="Choose a Category" 
+                                            tabindex="1"
+                                            formControlName="Estado">
+                                        <option value="">TODOS LOS DOCUMENTOS</option>
+                                        <option value="A">ACEPTADOS</option>
+                                        <option value="R">RECHAZADOS HACIENDA</option>
+                                        <option value="N">NOTAS DE CREDITO</option>
+                                        
+                                    </select>
+                                </div>
+                            </div>
+        
+                            <div class="col-md-3 text-center form-actions">
+                                <div class="button-box m-t-20">
+                                    <tr>
+                                        <td colspan="2">
+                                            <button type="submit" 
+                                                    class="btn btn-info btn-rounded" 
+                                                   >Buscar segun parametro</button>
+                                        </td>
+                        
+                                    </tr>
+                                </div>
+                            </div>
+        
+                        </div>
+        
+                        <div class="row">
+                            <div class="col-md-4">
+        
+                                <div class="form-group">
+                                    <label class="control-label"># Reservas</label>
+                                    <input type="text" 
+                                            id="CodReserva" 
+                                            class="form-control" 
+                                            placeholder="# de Reserva"
+                                            formControlName = "CodReserva"
+                                            >
+                                </div>
+        
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">Nombre de Cliente</label>
+                                    <input type="text" 
+                                            id="NomClie" 
+                                            class="form-control" 
+                                            placeholder="Nombre de Cliente"
+                                            formControlName="NomClie"
+                                            >
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-body"  >
+                                                <input class="form-control" 
+                                                type="text" 
+                                                placeholder="Buscar reserva..."                                             
+                                                >
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- AQUI SE MUESTRA EL FADE IN TEMPORAL -->
+<!-- =================================================== -->
+<div class="row animated fadeIn fast" *ngIf="cargando">
+    <div class="col-12">
+ 
+        <div class="alert alert-info text-center"> 
+            <h4 class="alert-heading">Cargando</h4>
+            <i class="fa fa-spin fa-refresh fa-2x"> </i>
+            <p class="mb-0">Por favor espere</p>
+        </div>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Invoice</h4>
+                <h6 class="card-subtitle">Documentos emitidos</h6>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>TD</th>
+                                <th>N° Electronico</th>
+                                <th>Cedula</th>
+                                <th>Nombre de Cliente</th>
+                                <th>Fecha</th>
+                                <th>Neto</th>
+                                <th>Impuesto</th>
+                                <th>Total</th>
+                                <th>Moneda</th>
+                                <th class="text-nowrap">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let invoice of listaInvoice" >
+                                <td>{{ invoice.PPV00_TipoDocu }}</td>
+                                <td>{{ invoice.PPV15_NumeroConsecutivo }}</td>
+                                <td style="text-align: right;">{{ invoice.PPV00_RucCliente }}</td>
+                                <td>{{ invoice.PPV00_NomCliente }}</td>
+                                <td>{{ invoice.PPV00_FechaDocu| date:'dd/MM/yyyy':'+05:00'  }}</td>
+                                <td style="text-align: right;" >{{ invoice.PPV00_Neto| number }}</td>
+                                <td style="text-align: right;">{{ invoice.PPV00_Impuesto|number }}</td>
+                                <td style="text-align: right;">{{ invoice.PPV00_TotalDocu|number }}</td>
+                                <td>{{ invoice.PPV00_Moneda }}</td>
+                                <td class="text-nowrap text-center">
+                                    <a href="#" 
+                                        data-toggle="tooltip" 
+                                        data-original-title="Editar"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
+                                        &nbsp;
+                                        &nbsp;
+                                    <a href="#" 
+                                        data-toggle="tooltip" 
+                                        data-original-title="Imprimir"> <i class="fa fa-print text-inverse m-r-10"></i> </a>
+                                        &nbsp;
+                                        &nbsp;
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <button class="btn btn-secondary">Anteriores</button>
+                &nbsp;
+                <button class="btn btn-secondary">Siguientes</button>
+
+            </div>
+        </div>
+    </div>
+</div>

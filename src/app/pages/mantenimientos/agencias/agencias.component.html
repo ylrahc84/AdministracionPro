@@ -1,0 +1,105 @@
+<div class="row animated fadeIn fast">
+    <div class="col-12">
+        <div class="card">
+            <h2>Lista de Agencias</h2>
+            <div class="card-body" [formGroup]="agenciaForm">
+
+                        <input class="form-control" 
+                        type="text" 
+                        placeholder="Buscar agencia..." 
+                        (keyup)="buscar(txtTermino.value)"
+                        formControlName="Ruc"
+                        #txtTermino
+                        
+                        >
+            </div>
+        </div>
+    </div>
+</div>
+
+<div  class="row animated fadeIn fast"
+        *ngIf="cargando">
+    <div class="col-12">
+ 
+        <div class="alert alert-info text-center"> 
+            <h4 class="alert-heading">Cargando</h4>
+            <i class="fa fa-spin fa-refresh fa-2x"> </i>
+            <p class="mb-0">Por favor espere</p>
+        </div>
+
+    </div>
+</div>
+
+<div class="row animated fadeIn fast" *ngIf="!cargando">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                
+                <div class="row">
+                    <div class="col-8">
+                        <h4 class="card-title">Agencias</h4>
+                        <h6 class="card-subtitle">Agencias registradas en la aplicacion</h6>
+                    </div>
+
+                    <div class="col">
+                        <div class="text-right">
+                            <a class="btn btn-primary"
+                                routerLink="/dashboard/agencia/nuevo">
+                                <i fa fa-office-o> Crear agencia </i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+ 
+                <div class="table-responsive">
+
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Codigo</th>
+                                <th>Cedula</th>
+                                <th>Nombre de Agencia</th>
+                                <th>Direccion</th>
+                                <th>Correo</th>
+                                <th>Telefono</th>
+                                <th class="text-nowrap">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let agencia of agencias" >
+                                <td>{{ agencia.MR01_CodAgencia }}</td>
+                                <td>{{ agencia.MR01_Ruc }}</td>
+                                <td>{{ agencia.MR01_NomAgencia }}</td>
+                                <td>{{ agencia.MR01_Direccion }}</td>
+                                <td>{{ agencia.MR01_Email }}</td>
+                                <td>{{ agencia.MR01_Telefono1 }}</td>
+                                <td class="text-nowrap text-center">
+                                    <a 
+                                       [routerLink]="['/dashboard','agencia', agencia.MR01_CodAgencia ]"
+                                       data-toggle="tooltip" 
+                                       data-original-title="Editar"> 
+                                       <i class="fa fa-pencil text-inverse m-r-10"></i> 
+                                    </a>
+                                    &nbsp;
+                                    &nbsp;
+                                    <a data-toggle="tooltip" 
+                                        data-original-title="Borrar"
+                                        class="cursor"
+                                        (click)="eliminarAgencia(agencia)"
+                                        > 
+                                        <i class="fa fa-close text-danger"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <button class="btn btn-secondary">Anteriores</button>
+                &nbsp;
+                <button class="btn btn-secondary">Siguiente</button>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,210 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card ">
+            <div class="card-header bg-info">
+                <h4 class="m-b-0 text-white">Mantenimiento de agencias</h4>
+            </div>
+            <div class="card-body">
+                <form action="#" class="form-horizontal"
+                    autocomplete="off"
+                    [formGroup]="agenciaForm"
+                    (ngSubmit)="crearAgencia()"
+                    >
+                    <div class="form-body">
+                        <h3 class="box-title">Informacion de Agencia</h3>
+                        <hr class="m-t-0 m-b-40">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="control-label text-right col-md-3">Cedula</label>
+                                    <div class="col-md-9">
+                                        <input type="text" 
+                                                class="form-control" 
+                                                placeholder="Cedula"
+                                                formControlName="Ruc">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="control-label text-right col-md-3">Nombre de Agencia</label>
+                                    <div class="col-md-9">
+                                        <input type="text" 
+                                                class="form-control" 
+                                                placeholder="Nombre de agencia"
+                                                formControlName="Nombre">
+                                        </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                        <!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="control-label text-right col-md-3">Contacto</label>
+                                    <div class="col-md-9">
+                                        <input type="text" 
+                                                class="form-control" 
+                                                placeholder="Contacto"
+                                                formControlName="Contacto">
+                                        </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="control-label text-right col-md-3">Email</label>
+                                    <div class="col-md-9">
+                                        <input type="text" 
+                                                class="form-control " 
+                                                placeholder="Email"
+                                                formControlName="Email">
+                                        </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                        <!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="control-label text-right col-md-3">Mercado</label>
+                                    <div class="col-md-9">
+                                        <select class="form-control custom-select" 
+                                                data-placeholder="Selecciona mercado" 
+                                                tabindex="1"
+                                                formControlName="Mercado">
+                                            <option value="NACIO">NACIO</option>
+                                            <option value="AGENC">AGENC</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="control-label text-right col-md-3">Activo</label>
+                                    <div class="col-md-9">
+                                        <div class="radio-list">
+                                            <label class="custom-control custom-radio">
+                                                <input id="radio3" name="radio" type="radio" checked="" class="custom-control-input">
+                                                <span class="custom-control-indicator"></span>
+                                                <span class="custom-control-description">SI</span>
+                                            </label>
+                                            <label class="custom-control custom-radio">
+                                                <input id="radio4" name="radio" type="radio" class="custom-control-input">
+                                                <span class="custom-control-indicator"></span>
+                                                <span class="custom-control-description">NO</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                        <h3 class="box-title">Direccion</h3>
+                        <hr class="m-t-0 m-b-40">
+                        <!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="control-label text-right col-md-3">Direccion</label>
+                                    <div class="col-md-9">
+                                        <input type="text" 
+                                                class="form-control"
+                                                placeholder="Direccion"
+                                                formControlName="Direccion">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="control-label text-right col-md-3">Ciudad</label>
+                                    <div class="col-md-9">
+                                        <input type="text" 
+                                                class="form-control"
+                                                placeholder="Ciudad"
+                                                formControlName="Ciudad">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="control-label text-right col-md-3">Pais</label>
+                                    <div class="col-md-9">
+                                        <input type="text" 
+                                                class="form-control"
+                                                placeholder="Pais"
+                                                formControlName="Pais">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="control-label text-right col-md-3">Fax</label>
+                                    <div class="col-md-9">
+                                        <input type="text" 
+                                                class="form-control"
+                                                placeholder="Fax"
+                                                formControlName="Fax">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                        <!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="control-label text-right col-md-3">Telefono</label>
+                                    <div class="col-md-9">
+                                        <input type="text" 
+                                                class="form-control"
+                                                placeholder="Telefono"
+                                                formControlName="Telefono">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="control-label text-right col-md-3">Telefono 2</label>
+                                    <div class="col-md-9">
+                                        <input type="text" 
+                                                class="form-control"
+                                                placeholder="Telefono 2"
+                                                formControlName="Telefono2">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                        <!--/row-->
+                    </div>
+                    <hr>
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-offset-3 col-md-9">
+                                        <button type="submit" class="btn btn-success">Guardar</button>
+                                        &nbsp;
+                                        <button
+                                        routerLink="/dashboard/agencias"
+                                        type="button" class="btn btn-inverse">Cancelar</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6"> </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
